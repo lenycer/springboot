@@ -1,6 +1,7 @@
 package me.lenycer.jpa.manytoone;
 
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +13,11 @@ import javax.persistence.Id;
  */
 @Data
 @Entity
+@BatchSize(size = 5)
 public class Team {
 
     @Id @GeneratedValue
-    @Column(name = "ID")
+    @Column(name = "TEAM_ID")
     private Long id;
 
     @Column(name = "TEAM_NAME")

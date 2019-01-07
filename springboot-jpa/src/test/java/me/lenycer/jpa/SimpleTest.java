@@ -8,20 +8,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootJpaApplicationTests {
+public class SimpleTest {
 
 	@Autowired
 	CompanyService companyService;
 
 	@Test
-	@Transactional
 	public void create() {
 		Company company = new Company();
 		company.setName("Test company");
@@ -34,7 +32,6 @@ public class SpringbootJpaApplicationTests {
 	}
 
 	@Test
-	@Transactional
 	public void findAll() {
 		String[] arr = {"A", "B", "C"};
 		Arrays.stream(arr).forEach(s -> {
@@ -46,9 +43,37 @@ public class SpringbootJpaApplicationTests {
 
 		List<Company> list = companyService.getCompanies();
 		System.out.println(list);
-
-		Assert.assertEquals(list.size(), arr.length);
 	}
 
+
+	@Test
+	public void update() {
+		Company company = new Company();
+		company.setName("Test company");
+		company.setLocation("Test location");
+
+		Company result = companyService.createCompany(company);
+		System.out.println(result);
+
+		companyService.update(result);
+
+		Company findCompany = companyService.getCompany(result.getId());
+
+		System.out.println(findCompany);
+		Assert.assertEquals("updateLocation", findCompany.getLocation());
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void delete() {
+		Company company = new Company();
+		company.setName("Test company");
+		company.setLocation("Test location");
+
+		Company result = companyService.createCompany(company);
+
+		companyService.delete(result.getId());
+
+		companyService.getCompany(result.getId());
+	}
 }
 

@@ -1,5 +1,5 @@
-# spring jpa 
-
+# spring jpa
+ 
 ## simple jpa (crud)
  - extends JpaRepository 
  
@@ -8,3 +8,4 @@
  
 ## NativeQuery 
  - example native query and protection
+ 
