@@ -1,0 +1,1 @@
+INSERT INTO USER (ID, LOGIN_ID, PASSWORD, NAME, EMAIL, STATUS, REG_DATE)VALUES (99999999, 'suser', '$2a$10$ibtayVNtoHDvvcdtjFSXzeLKsxA4mZmzCtStN0ebEVxr1a3zo6dp2', 'suser', 'suser@mail.com', 'CONFIRM', CURRENT_TIMESTAMP());
