@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@NamedEntityGraph(name="MemberEntity", attributeNodes = @NamedAttributeNode("team"))
 public class Member {
 
     @Id @GeneratedValue

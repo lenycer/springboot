@@ -13,7 +13,7 @@ import javax.persistence.Id;
  */
 @Data
 @Entity
-@BatchSize(size = 5)
+//@BatchSize(size = 5) // team 정보 필요 시 select in 으로 조회 n+1 처리.
 public class Team {
 
     @Id @GeneratedValue
